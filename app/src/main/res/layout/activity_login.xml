@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/ScreenBackground"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/QIBus_softui_spacing_mlarge"
+                android:layout_marginEnd="@dimen/QIBus_softui_spacing_large"
+                android:fontFamily="@font/googlesansbold"
+                android:text="Welcome"
+                android:textColor="@color/QIBus_softui_textChild"
+                android:textSize="@dimen/QIBus_softui_font_xlarge"
+                android:visibility="gone" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/QIBus_softui_spacing_mlarge"
+                android:layout_marginEnd="@dimen/QIBus_softui_spacing_large"
+                android:fontFamily="@font/googlesansextrabold"
+                android:text=""
+                android:textAllCaps="true"
+                android:textColor="@color/QIBus_softui_colorPrimary"
+                android:textSize="@dimen/QIBus_softui_font_xxxlarge" />
+
+            <ImageView
+                android:layout_width="@dimen/_80sdp"
+                android:layout_height="@dimen/_80sdp"
+                android:layout_gravity="center"
+                android:paddingTop="@dimen/QIBus_softui_spacing_large"
+                android:src="@drawable/seal" />
+
+            <LinearLayout
+                android:id="@+id/llMobile"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="@dimen/QIBus_softui_spacing_mlarge"
+                android:layout_marginEnd="25dp"
+                android:background="@drawable/qibus_softui_inner"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+
+                <EditText
+                    android:id="@+id/edMobileNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:background="@android:color/transparent"
+                    android:ems="10"
+                    android:hint="Mobile Number"
+                    android:inputType="number"
+                    android:maxLength="10"
+                    android:paddingStart="@dimen/QIBus_softui_spacing_large"
+                    android:paddingEnd="@dimen/QIBus_softui_spacing_medium"
+                    android:textColor="@color/QIBus_softui_textChild" />
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/qibus_softu_ic_card_new">
+
+                <TextView
+                    android:id="@+id/btnContinue"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="@font/googlesansbold"
+                    android:gravity="center"
+                    android:text="Continue"
+                    android:textAllCaps="false"
+                    android:textColor="@color/QIBus_softui_textColorPrimary"
+                    android:textSize="@dimen/QIBus_softui_font_large" />
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>

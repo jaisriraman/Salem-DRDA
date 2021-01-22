@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_dashboard"
+            android:icon="@drawable/ic_dashboard"
+            android:title="DashBoard" />
+        <item
+            android:id="@+id/nav_add_beneficiary"
+            android:icon="@drawable/ic_beneficiary"
+            android:visible="false"
+            android:title="Add Beneficiary" />
+        <item
+            android:id="@+id/nav_add_work_order"
+            android:icon="@drawable/ic_add_work_order"
+            android:visible="false"
+            android:title="Add Work Order" />
+        <item
+            android:id="@+id/nav_add_work_stage"
+            android:icon="@drawable/ic_add_work_order"
+            android:visible="false"
+            android:title="Add Work Stage" />
+
+        <item
+            android:id="@+id/nav_add_payment_billing"
+            android:icon="@drawable/ic_add_work_order"
+            android:visible="false"
+            android:title="Add Billing" />
+
+        <item
+            android:id="@+id/nav_panjayat_summary"
+            android:icon="@drawable/ic_summary"
+            android:visible="false"
+            android:title="Panjayat Summary" />
+
+        <item
+            android:id="@+id/nav_district_panjayat_summary"
+            android:icon="@drawable/ic_summary"
+            android:visible="false"
+            android:title="Panjayat Summary" />
+
+
+        <item
+            android:id="@+id/nav_block_summary"
+            android:icon="@drawable/ic_summary"
+            android:visible="false"
+            android:title="Block Summary" />
+    </group>
+</menu>

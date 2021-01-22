@@ -1,0 +1,74 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="QIBusSoftui" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/QIBus_softui_colorPrimary</item>
+        <item name="colorPrimaryDark">@color/QIBus_softui_colorPrimaryDark</item>
+        <item name="colorAccent">@color/QIBus_softui_colorAccent</item>
+        <item name="android:fontFamily">@font/googlesansregular</item>
+        <item name="android:homeAsUpIndicator">@drawable/qibus_softui_ic_keyboard_backspace_black
+        </item>
+        <item name="colorControlActivated">@color/QIBus_softui_colorPrimary</item>
+        <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
+        <!--<item name="android:textColorSecondary">@color/white</item> ///menu color change-->
+    </style>
+
+    <style name="DrawerArrowStyle" parent="@style/Widget.AppCompat.DrawerArrowToggle">
+        <item name="spinBars">true</item>
+        <item name="color">@android:color/white</item>
+    </style>
+
+    <style name="QIBusSoftui.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="QIBusSoftui.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="FullScreen" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/QIBus_softui_colorPrimary</item>
+        <item name="colorPrimaryDark">@color/QIBus_softui_colorPrimaryDark</item>
+        <item name="colorAccent">@color/QIBus_softui_colorAccent</item>
+        <item name="android:fontFamily">@font/googlesansregular</item>
+        <item name="android:homeAsUpIndicator">@drawable/qibus_softui_ic_keyboard_backspace_black
+        </item>
+        <item name="colorControlActivated">@color/QIBus_softui_colorPrimary</item>
+    </style>
+
+
+    <!-- <style name="Theme.Zerobugz" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+         &lt;!&ndash; Primary brand color. &ndash;&gt;
+         <item name="colorPrimary">#7373ea</item>
+         <item name="colorPrimaryVariant">#7373ea</item>
+         <item name="colorOnPrimary">#7373ea</item>
+         &lt;!&ndash; Secondary brand color. &ndash;&gt;
+         <item name="colorSecondary">@color/teal_200</item>
+         <item name="colorSecondaryVariant">@color/teal_700</item>
+         <item name="colorOnSecondary">@color/black</item>
+         &lt;!&ndash; Status bar color. &ndash;&gt;
+         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+         &lt;!&ndash; Customize your theme here. &ndash;&gt;
+     </style>
+ -->
+    <style name="bottomnavigation" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/QIBus_softui_colorPrimary</item>
+        <item name="colorPrimaryDark">@color/QIBus_softui_colorPrimaryDark</item>
+        <item name="colorControlActivated">@color/QIBus_softui_colorPrimary</item>
+        <item name="colorControlHighlight">@color/QIBus_softui_colorPrimaryRipple</item>
+    </style>
+
+
+    <!--  <style name="Theme.Zerobugz.NoActionBar">
+          <item name="windowActionBar">false</item>
+          <item name="windowNoTitle">true</item>
+      </style>-->
+
+    <style name="Theme.Zerobugz.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.Zerobugz.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="ToolbarStyle" parent="QIBusSoftui">
+        <item name="android:textColorSecondary">@color/white</item>
+    </style>
+
+
+</resources>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/alertTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:singleLine="false"
+        android:fontFamily="@font/googlesansregular"
+        android:textColor="@color/QIBus_softui_textChild"
+        android:textSize="@dimen/QIBus_softui_font_large"
+        tools:text="Item Name" />
+
+</LinearLayout>
