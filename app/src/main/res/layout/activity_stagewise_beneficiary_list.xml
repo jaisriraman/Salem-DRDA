@@ -149,18 +149,32 @@
                     android:padding="@dimen/_5sdp"
                     android:text="Panjayat" />
 
-                <com.zerobugz.drdasalem.utils.Spinner.SingleSpinnerSearch
+
+                <TextView
                     android:id="@+id/mPanchayat"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
+                    android:padding="@dimen/_5sdp"
+                    android:layout_weight="1"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="@dimen/QIBus_softui_spacing_small"
                     android:layout_marginTop="@dimen/_2sdp"
                     android:layout_marginEnd="@dimen/QIBus_softui_spacing_small"
                     android:layout_marginBottom="@dimen/_5sdp"
-                    android:layout_weight="1"
                     android:minHeight="30dp"
-                    app:hintText="Select Panjayat" />
+                    android:textSize="22dp" />
+<!--                <com.zerobugz.drdasalem.utils.Spinner.SingleSpinnerSearch-->
+<!--                    android:id="@+id/mPanchayat"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="0dp"-->
+<!--                    android:layout_gravity="center_vertical"-->
+<!--                    android:layout_marginStart="@dimen/QIBus_softui_spacing_small"-->
+<!--                    android:layout_marginTop="@dimen/_2sdp"-->
+<!--                    android:layout_marginEnd="@dimen/QIBus_softui_spacing_small"-->
+<!--                    android:layout_marginBottom="@dimen/_5sdp"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:minHeight="30dp"-->
+<!--                    app:hintText="Select Panjayat" />-->
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>

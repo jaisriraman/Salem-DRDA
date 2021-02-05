@@ -16,7 +16,8 @@
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning"
         tools:targetApi="q">
-        <activity android:name=".activities.DistrictPanchayatSummary"></activity>
+        <activity android:name=".activities.DistrictSchemeWiseBeneficiaryList" />
+        <activity android:name=".activities.DistrictPanchayatSummary" />
         <activity android:name=".activities.AddWorkStage" />
         <activity android:name=".activities.WorkStageList" />
         <activity android:name=".activities.AddWorkOrder" />

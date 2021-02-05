@@ -30,6 +30,12 @@ interface Api {
         @Path("blockid") blockid: String, @Path("id") id: String?
     ): Call<PanjayatResponse?>?
 
+    @GET("getblockwisepanjayatlist/{blockid}")
+    fun getDistrictPanjayatList(
+        @Path("blockid") blockid: String?
+    ): Call<PanjayatResponse?>?
+
+
     @GET("gethabitant/{blockid}/{panjayatid}")
     fun getHabitantlist(
         @Path("blockid") blockid: String, @Path("panjayatid") id: String?

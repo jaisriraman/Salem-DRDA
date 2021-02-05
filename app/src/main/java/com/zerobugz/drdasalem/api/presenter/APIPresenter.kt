@@ -229,7 +229,7 @@ class APIPresenter {
             ) {
                 val blockResponse: BlockResponse? = response.body()
 
-                if (blockResponse?.status != 0) {
+                if (blockResponse?.status != 1) {
                     Realm.init(getActivity)
                     Realm.getDefaultInstance().use { realmT ->
                         val results: RealmResults<BlockResponse> =
@@ -894,6 +894,48 @@ class APIPresenter {
     }
 
 
+
+
+    fun getDistrictPanjayatList(blockid: String) {
+
+        val call: Call<PanjayatResponse?>? = RetrofitClient
+            .instance?.api?.getDistrictPanjayatList(blockid)
+
+        call?.enqueue(object : Callback<PanjayatResponse?> {
+            override fun onResponse(
+                call: Call<PanjayatResponse?>,
+                response: Response<PanjayatResponse?>
+            ) {
+                val panjayatResponse: PanjayatResponse? = response.body()
+
+                if (panjayatResponse?.status != 0) {
+                    Realm.init(getActivity)
+                    Realm.getDefaultInstance().use { realmT ->
+                        val results: RealmResults<PanjayatResponse> =
+                            realmT.where<PanjayatResponse>().findAll()
+                        val results1: RealmResults<PanjayatResponseResults> =
+                            realmT.where<PanjayatResponseResults>().findAll()
+                        realmT.executeTransaction { results.deleteAllFromRealm() }
+                        realmT.executeTransaction { results1.deleteAllFromRealm() }
+                        realmT.executeTransaction { realm: Realm ->
+                            realm.insertOrUpdate(
+                                panjayatResponse
+                            )
+                        }
+                    }
+                    apiView.onSuccess()
+                } else {
+                    apiView.onException()
+                    Toaster.showShort(getActivity, panjayatResponse.message)
+                }
+            }
+
+            override fun onFailure(call: Call<PanjayatResponse?>, t: Throwable) {
+                apiView.onException()
+                println("=================================" + t.stackTrace)
+            }
+        })
+    }
 
 
 

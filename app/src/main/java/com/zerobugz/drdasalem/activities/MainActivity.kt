@@ -217,23 +217,42 @@ class MainActivity : AppCompatActivity() {
 
              }*/
 
-
             totalBlockCount.text = "" + totalBeneficiaryResponse!!.totalblock
             totalPanjayatCount.text = "" + totalBeneficiaryResponse!!.totalpanjayat
             totalBeneficiaryCount.text = "" + totalBeneficiaryResponse!!.totalbeneficiarycount
         }
 
+        val rResponse = realm!!.where<OTPResponseResults>().findFirst()
+
         val schemeWiseCounts = realm!!.where<SchemeWiseCounts>().findAll()
-        recyclerView.bind(schemeWiseCounts, R.layout.dashboard_schemelist) { item ->
-            schemeCount.text = "" + item.totalbeneficiary
-            schemeName.text = "" + item.schemename
-            headerLayout.setOnClickListener {
-                val intent = Intent(this@MainActivity, SchemeWiseBeneficiaryList::class.java)
-                intent.putExtra("schemeId", item.schemeid)
-                startActivity(intent)
+
+        if (rResponse != null) {
+
+            if (rResponse.rolename.equals("District level")) {
+
+                recyclerView.bind(schemeWiseCounts, R.layout.dashboard_schemelist) { item ->
+                    schemeCount.text = "" + item.totalbeneficiary
+                    schemeName.text = "" + item.schemename
+                    headerLayout.setOnClickListener {
+                        val intent = Intent(this@MainActivity, DistrictSchemeWiseBeneficiaryList::class.java)
+                        intent.putExtra("schemeId", item.schemeid)
+                        startActivity(intent)
+                    }
+                }
+
+            } else {
+
+                recyclerView.bind(schemeWiseCounts, R.layout.dashboard_schemelist) { item ->
+                    schemeCount.text = "" + item.totalbeneficiary
+                    schemeName.text = "" + item.schemename
+                    headerLayout.setOnClickListener {
+                        val intent = Intent(this@MainActivity, SchemeWiseBeneficiaryList::class.java)
+                        intent.putExtra("schemeId", item.schemeid)
+                        startActivity(intent)
+                    }
+                }
+
             }
-
-
         }
 
     }

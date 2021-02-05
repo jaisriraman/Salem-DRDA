@@ -40,6 +40,7 @@ import kotlinx.android.synthetic.main.stagewisebeneficiary_recycler_view_item.vi
 class StageWiseBeneficiaryList : AppCompatActivity() {
     private var schemeid: String? = null
     private var panchayatId: String? = null
+    private var panchayatname: String? = null
     private var stageId: String? = null
     private var realm: Realm? = null
 
@@ -57,9 +58,10 @@ class StageWiseBeneficiaryList : AppCompatActivity() {
         if (intent != null && intent.extras != null) {
             schemeid = intent.getStringExtra("schemeid")
             panchayatId = intent.getStringExtra("panchayatId")
+            panchayatname = intent.getStringExtra("panchayatname")
             stageId = intent.getStringExtra("stageId")
         }
-
+        mPanchayat.text = "" + panchayatname.toString()
         swipeRefresh.isRefreshing = true
         swipeRefresh.setOnRefreshListener {
 //            getPanchayatList()
@@ -114,13 +116,13 @@ class StageWiseBeneficiaryList : AppCompatActivity() {
 
     }
 
-    private fun getBeneficiaryList(yearid: String, schemeId: String, panjayatId: String) {
+    private fun getBeneficiaryList(yearid: String, schemeId: String) {
         swipeRefresh.isRefreshing = true
         val rResponse = realm!!.where<OTPResponseResults>().findFirst()
         val beneficiaryRequest = BeneficiaryRequest()
         beneficiaryRequest.schemeid = schemeId
         beneficiaryRequest.blockid = rResponse!!.blockid.toString()
-        beneficiaryRequest.panjayatid = panjayatId
+        beneficiaryRequest.panjayatid = panchayatId
         beneficiaryRequest.stageid = stageId
         beneficiaryRequest.yearid = yearid
 
@@ -399,11 +401,11 @@ class StageWiseBeneficiaryList : AppCompatActivity() {
             for (i in items.indices) {
                 if (items[i].isSelected) {
 
-                    if (finyear.selectedItems.size > 0 && schemeid != null && mPanchayat.selectedItems.size > 0) {
+                    if (finyear.selectedItems.size > 0 && schemeid != null) {
                         getBeneficiaryList(
                             finyear.selectedItems[0].key,
                             schemeid!!,
-                            mPanchayat.selectedItems[0].key
+//                            mPanchayat.selectedItems[0].key
                         )
                     }
 
@@ -414,87 +416,87 @@ class StageWiseBeneficiaryList : AppCompatActivity() {
 
     }
 
-    private fun getPanchayatList() {
-        val rResponse = realm!!.where<OTPResponseResults>().findFirst()
-        if (rResponse != null) {
-            val blockId = rResponse.blockid
-            val id = rResponse._id
-            APIPresenter(this, object : APIView() {
-                override fun onSuccess() {
-                    setPanchayatItems()
-                }
+//    private fun getPanchayatList() {
+//        val rResponse = realm!!.where<OTPResponseResults>().findFirst()
+//        if (rResponse != null) {
+//            val blockId = rResponse.blockid
+//            val id = rResponse._id
+//            APIPresenter(this, object : APIView() {
+//                override fun onSuccess() {
+//                    setPanchayatItems()
+//                }
+//
+//                override fun onException() {
+//
+//                }
+//
+//            }).getPanjayatList(blockId.toString(), id.toString())
+//        } else {
+//            Log.e("empty", "empty")
+//        }
+//
+//    }
 
-                override fun onException() {
-
-                }
-
-            }).getPanjayatList(blockId.toString(), id.toString())
-        } else {
-            Log.e("empty", "empty")
-        }
-
-    }
-
-    private fun setPanchayatItems() {
-
-        val panchayatList = ArrayList<KeyPairModel>()
-        val query1 = realm!!.where<PanjayatResponseResults>().findAll()
-        for (k in 0 until query1.size) {
-
-            if (k == 0) {
-                panchayatList!!.add(
-                    KeyPairModel(
-                        (query1[k]?.panjayatid),
-                        query1[k]?.panjayatname,
-                        true
-                    )
-                )
-            } else {
-                panchayatList!!.add(
-                    KeyPairModel(
-                        (query1[k]?.panjayatid),
-                        query1[k]?.panjayatname,
-                        false
-                    )
-                )
-            }
-
-
-        }
-        val panchayatArray = ArrayList<KeyPairBoolData>()
-        for (k in panchayatList!!.indices) {
-            val h = KeyPairBoolData()
-            h.id = (k + 1).toLong()
-            h.name = panchayatList[k].value
-            h.key = panchayatList[k].key
-            h.isSelected = panchayatList[k].aBoolean
-            panchayatArray.add(h)
-        }
-        mPanchayat!!.setItems(panchayatArray, -1) { items: List<KeyPairBoolData> ->
-            for (i in items.indices) {
-                if (items[i].isSelected) {
-                    Log.i("val_driver panchayat", i.toString() + " : " + items[i].key + " : " + items[i].name)
-                    Utils.showProgress(this)
-                    if (finyear.selectedItems.size > 0 && schemeid != null && mPanchayat.selectedItems.size > 0) {
-                        getBeneficiaryList(
-                            finyear.selectedItems[0].key,
-                            schemeid!!,
-                            mPanchayat.selectedItems[0].key
-                        )
-                    }
-                }
-            }
-        }
-
-        if (finyear.selectedItems.size > 0 && schemeid != null && mPanchayat.selectedItems.size > 0) {
-            getBeneficiaryList(
-                finyear.selectedItems[0].key,
-                schemeid!!,
-                mPanchayat.selectedItems[0].key
-            )
-        }
-
-    }
+//    private fun setPanchayatItems() {
+//
+//        val panchayatList = ArrayList<KeyPairModel>()
+//        val query1 = realm!!.where<PanjayatResponseResults>().findAll()
+//        for (k in 0 until query1.size) {
+//
+//            if (k == 0) {
+//                panchayatList!!.add(
+//                    KeyPairModel(
+//                        (query1[k]?.panjayatid),
+//                        query1[k]?.panjayatname,
+//                        true
+//                    )
+//                )
+//            } else {
+//                panchayatList!!.add(
+//                    KeyPairModel(
+//                        (query1[k]?.panjayatid),
+//                        query1[k]?.panjayatname,
+//                        false
+//                    )
+//                )
+//            }
+//
+//
+//        }
+//        val panchayatArray = ArrayList<KeyPairBoolData>()
+//        for (k in panchayatList!!.indices) {
+//            val h = KeyPairBoolData()
+//            h.id = (k + 1).toLong()
+//            h.name = panchayatList[k].value
+//            h.key = panchayatList[k].key
+//            h.isSelected = panchayatList[k].aBoolean
+//            panchayatArray.add(h)
+//        }
+//        mPanchayat!!.setItems(panchayatArray, -1) { items: List<KeyPairBoolData> ->
+//            for (i in items.indices) {
+//                if (items[i].isSelected) {
+//                    Log.i("val_driver panchayat", i.toString() + " : " + items[i].key + " : " + items[i].name)
+//                    Utils.showProgress(this)
+//                    if (finyear.selectedItems.size > 0 && schemeid != null) {
+//                        getBeneficiaryList(
+//                            finyear.selectedItems[0].key,
+//                            schemeid!!,
+////                            mPanchayat.selectedItems[0].key
+//                        )
+//                    }
+//                }
+//            }
+//        }
+//
+//        if (finyear.selectedItems.size > 0 && schemeid != null) {
+//            getBeneficiaryList(
+//                finyear.selectedItems[0].key,
+//                schemeid!!,
+////                mPanchayat.selectedItems[0].key
+//            )
+//        }
+//
+//    }
 
 
 
@@ -503,7 +505,7 @@ class StageWiseBeneficiaryList : AppCompatActivity() {
         APIPresenter(this, object : APIView() {
             override fun onSuccess() {
                 setYearItems()
-                getPanchayatList()
+//                getPanchayatList()
 
             }
 
@@ -554,11 +556,11 @@ class StageWiseBeneficiaryList : AppCompatActivity() {
             for (i in items.indices) {
                 if (items[i].isSelected) {
 
-                    if (finyear.selectedItems.size > 0 && schemeid != null && mPanchayat.selectedItems.size > 0) {
+                    if (finyear.selectedItems.size > 0 && schemeid != null) {
                         getBeneficiaryList(
                             finyear.selectedItems[0].key,
                             schemeid!!,
-                            mPanchayat.selectedItems[0].key
+//                            mPanchayat.selectedItems[0].key
                         )
                     }
 
@@ -567,6 +569,13 @@ class StageWiseBeneficiaryList : AppCompatActivity() {
             }
         }
 
+        if (finyear.selectedItems.size > 0 && schemeid != null) {
+            getBeneficiaryList(
+                finyear.selectedItems[0].key,
+                schemeid!!,
+//                mPanchayat.selectedItems[0].key
+            )
+        }
 
     }
 
